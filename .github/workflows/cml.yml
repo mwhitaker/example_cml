@@ -2,16 +2,15 @@ name: model-training
 on: [push]
 jobs:
   run:
-    runs-on: [ubuntu-latest]
-    container: docker://mwhitaker/ab
+    runs-on: [self-hosted,cml]
     steps:
       - uses: actions/checkout@v2
       - name: ab_run
         env:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "new yml"
-          ab-runner
+          echo "new yml" > report.md
+          cml-send-comment report.md
       - name: Commit and push if it changed # commit new line graph if it has changed
         run: |-
           git config user.name "Automated"
