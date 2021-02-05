@@ -2,7 +2,7 @@ name: model-training
 on: [push]
 jobs:
   run:
-    runs-on: [self-hosted,cml]
+    runs-on: [self-hosted,ab]
     steps:
       - uses: actions/checkout@v2
       - name: ab_run
