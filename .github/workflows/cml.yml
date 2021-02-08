@@ -1,5 +1,8 @@
 name: model-training
-on: [push]
+on:
+  workflow_dispatch:
+  push:
+    
 jobs:
   run:
     runs-on: [self-hosted,ab]
